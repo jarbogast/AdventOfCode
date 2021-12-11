@@ -19,23 +19,11 @@ class DayOneSolution {
         }
     }
     
-    static func numIncreasingDepthMeasurements(depthMeasurements: [Int]) -> Int {
+    static func numIncreasingDepthMeasurements(depthMeasurements: [Int], windowSize: Int) -> Int {
         var numIncreases = 0
         for (index, measurement) in depthMeasurements.enumerated() {
-            guard index > 0 else { continue }
-            if (measurement > depthMeasurements[index-1]) { numIncreases += 1 }
-        }
-        
-        return numIncreases
-    }
-    
-    static func numIncreasingDepthMeasurementsWithWindow(depthMeasurements: [Int]) -> Int {
-        var numIncreases = 0
-        for (index, measurement) in depthMeasurements.enumerated() {
-            guard index > 2 else { continue }
-            let windowSum = measurement + depthMeasurements[index-1] + depthMeasurements[index-2]
-            let previousWindowSum = depthMeasurements[index-1] + depthMeasurements[index-2] + depthMeasurements[index-3]
-            if (windowSum > previousWindowSum) { numIncreases += 1 }
+            guard index > (windowSize - 1) else { continue }
+            if ((measurement - depthMeasurements[index-windowSize]) > 0) { numIncreases += 1 }
         }
         
         return numIncreases

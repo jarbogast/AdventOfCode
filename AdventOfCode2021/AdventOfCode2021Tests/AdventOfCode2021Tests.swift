@@ -31,7 +31,7 @@ class AdventOfCode2021Tests: XCTestCase {
         let bundle = Bundle(for: DayOneSolution.self)
         let path = bundle.path(forResource: "inputday1", ofType: "txt")
         let measurements = DayOneSolution.depthMeasurementsFromPath(path: path!)
-        let numIncreases = DayOneSolution.numIncreasingDepthMeasurements(depthMeasurements: measurements)
+        let numIncreases = DayOneSolution.numIncreasingDepthMeasurements(depthMeasurements: measurements, windowSize: 1)
         
         XCTAssertEqual(numIncreases, 1766)
     }
@@ -40,7 +40,7 @@ class AdventOfCode2021Tests: XCTestCase {
         let bundle = Bundle(for: DayOneSolution.self)
         let path = bundle.path(forResource: "inputday1", ofType: "txt")
         let measurements = DayOneSolution.depthMeasurementsFromPath(path: path!)
-        let numIncreases = DayOneSolution.numIncreasingDepthMeasurementsWithWindow(depthMeasurements: measurements)
+        let numIncreases = DayOneSolution.numIncreasingDepthMeasurements(depthMeasurements: measurements, windowSize: 3)
         
         XCTAssertEqual(numIncreases, 1797)
     }

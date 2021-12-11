@@ -28,4 +28,16 @@ class DayOneSolution {
         
         return numIncreases
     }
+    
+    static func numIncreasingDepthMeasurementsWithWindow(depthMeasurements: [Int]) -> Int {
+        var numIncreases = 0
+        for (index, measurement) in depthMeasurements.enumerated() {
+            guard index > 2 else { continue }
+            let windowSum = measurement + depthMeasurements[index-1] + depthMeasurements[index-2]
+            let previousWindowSum = depthMeasurements[index-1] + depthMeasurements[index-2] + depthMeasurements[index-3]
+            if (windowSum > previousWindowSum) { numIncreases += 1 }
+        }
+        
+        return numIncreases
+    }
 }

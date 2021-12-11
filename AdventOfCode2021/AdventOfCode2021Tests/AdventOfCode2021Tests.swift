@@ -10,38 +10,21 @@ import XCTest
 
 class AdventOfCode2021Tests: XCTestCase {
 
+    var measurements: [Int] = []
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        let bundle = Bundle(for: DayOneSolution.self)
+        let path = bundle.path(forResource: "inputday1", ofType: "txt")
+        measurements = DayOneSolution.depthMeasurementsFromPath(path: path!)
     }
 
     func testFileParsing() throws {
-        let bundle = Bundle(for: DayOneSolution.self)
-        let path = bundle.path(forResource: "inputday1", ofType: "txt")
-        let measurements = DayOneSolution.depthMeasurementsFromPath(path: path!)
-        
         XCTAssertEqual(measurements[0], 134)
         XCTAssertEqual(measurements.count, 2000)
     }
     
     func testNumIncreases() throws {
-        let bundle = Bundle(for: DayOneSolution.self)
-        let path = bundle.path(forResource: "inputday1", ofType: "txt")
-        let measurements = DayOneSolution.depthMeasurementsFromPath(path: path!)
-        let numIncreases = DayOneSolution.numIncreasingDepthMeasurements(depthMeasurements: measurements, windowSize: 1)
-        
-        XCTAssertEqual(numIncreases, 1766)
-    }
-    
-    func testNumIncreasesWithWindow() throws {
-        let bundle = Bundle(for: DayOneSolution.self)
-        let path = bundle.path(forResource: "inputday1", ofType: "txt")
-        let measurements = DayOneSolution.depthMeasurementsFromPath(path: path!)
-        let numIncreases = DayOneSolution.numIncreasingDepthMeasurements(depthMeasurements: measurements, windowSize: 3)
-        
-        XCTAssertEqual(numIncreases, 1797)
+        XCTAssertEqual(DayOneSolution.numIncreasingDepthMeasurements(depthMeasurements: measurements, windowSize: 1), 1766)
+        XCTAssertEqual(DayOneSolution.numIncreasingDepthMeasurements(depthMeasurements: measurements, windowSize: 3), 1797)
     }
 }

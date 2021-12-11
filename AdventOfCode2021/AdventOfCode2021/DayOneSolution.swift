@@ -20,12 +20,6 @@ class DayOneSolution {
     }
     
     static func numIncreasingDepthMeasurements(depthMeasurements: [Int], windowSize: Int) -> Int {
-        var numIncreases = 0
-        for (index, measurement) in depthMeasurements.enumerated() {
-            guard index > (windowSize - 1) else { continue }
-            if ((measurement - depthMeasurements[index-windowSize]) > 0) { numIncreases += 1 }
-        }
-        
-        return numIncreases
+        return depthMeasurements.enumerated().filter{ ($0.0 > (windowSize - 1)) && (($0.1 - depthMeasurements[$0.0-windowSize]) > 0) }.count
     }
 }

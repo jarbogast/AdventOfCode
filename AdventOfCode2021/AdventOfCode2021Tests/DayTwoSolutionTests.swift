@@ -9,10 +9,17 @@ import XCTest
 @testable import AdventOfCode2021
 
 class DayTwoSolutionTests: XCTestCase {
-
-    func testFileParsing() throws {
+    var path = ""
+    
+    override func setUpWithError() throws {
         let bundle = Bundle(for: DayOneSolution.self)
-        let path = bundle.path(forResource: "inputday2", ofType: "txt")
-        XCTAssertEqual(submarinePosition(path: path!), 2091984)
+        path = bundle.path(forResource: "inputday2", ofType: "txt")!
+    }
+    func testSubmarine() throws {
+        XCTAssertEqual(submarinePosition(path: path), 2091984)
+    }
+    
+    func testSubmarineWithAim() throws {
+        XCTAssertEqual(submarinePositionWithAim(path: path), 2086261056)
     }
 }

@@ -10,14 +10,6 @@ import XCTest
 
 class DayTwoSolutionTests: XCTestCase {
 
-    var measurements: [Int] = []
-    
-    override func setUpWithError() throws {
-        let bundle = Bundle(for: DayOneSolution.self)
-        let path = bundle.path(forResource: "inputday2", ofType: "txt")
-        measurements = DayOneSolution.depthMeasurementsFromPath(path: path!)
-    }
-
     func testFileParsing() throws {
         let bundle = Bundle(for: DayOneSolution.self)
         let path = bundle.path(forResource: "inputday2", ofType: "txt")

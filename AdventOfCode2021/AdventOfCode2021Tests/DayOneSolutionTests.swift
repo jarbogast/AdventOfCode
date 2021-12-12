@@ -8,7 +8,7 @@
 import XCTest
 @testable import AdventOfCode2021
 
-class AdventOfCode2021Tests: XCTestCase {
+class DayOneSolutionTests: XCTestCase {
 
     var measurements: [Int] = []
     

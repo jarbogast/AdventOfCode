@@ -10,13 +10,7 @@ import Foundation
 class DayOneSolution {
     
     static func depthMeasurementsFromPath(path: String) -> [Int] {
-        do {
-            let data = try String(contentsOfFile: path)
-            let measurementStrings = data.components(separatedBy: .newlines)
-            return measurementStrings.map { return Int($0) ?? -1 }.filter{ $0 > 0 }
-        } catch {
-            return []
-        }
+        return linesFromPath(path: path).map { return Int($0) ?? -1 }.filter{ $0 > 0 }
     }
     
     static func numIncreasingDepthMeasurements(depthMeasurements: [Int], windowSize: Int) -> Int {
